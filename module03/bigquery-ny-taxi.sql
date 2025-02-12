@@ -38,6 +38,14 @@ PARTITION BY DATE(tpep_dropoff_datetime)
 CLUSTER BY VendorID AS
 SELECT * FROM `persuasive-net-450610-v7.nytaxi.yellow_tripdata`;
 
+--- Compare number of unique vendors between partitioned and non-partitioned tables
+-- These should return the same count as they contain the same data
+SELECT COUNT(DISTINCT(VendorID)) FROM nytaxi.yellow_tripdata
+WHERE DATE(tpep_dropoff_datetime) BETWEEN '2024-03-01' AND '2024-03-15';
+
+SELECT COUNT(DISTINCT(VendorID)) FROM `nytaxi.yellow_tripdata_partitioned`
+WHERE DATE(tpep_dropoff_datetime) BETWEEN '2024-03-01' AND '2024-03-15';
+
 -- Compare total row counts between tables
 -- These should be identical as they contain the same data
 SELECT COUNT(*) FROM nytaxi.yellow_tripdata;

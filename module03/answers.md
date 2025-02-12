@@ -63,6 +63,22 @@ SELECT * FROM `persuasive-net-450610-v7.nytaxi.yellow_tripdata`;
 ### Q6: Impact of Partitioning on Query Performance
 *Query to compare performance between partitioned and non-partitioned tables for specific date range*
 
+For the materialized table (non-partitioned):
+```sql
+SELECT DISTINCT(VendorID) 
+FROM nytaxi.yellow_tripdata
+WHERE DATE(tpep_dropoff_datetime) BETWEEN '2024-03-01' AND '2024-03-15';
+```
+
+For the partitioned table:
+```sql
+SELECT DISTINCT(VendorID) 
+FROM nytaxi.yellow_tripdata_partitioned
+WHERE DATE(tpep_dropoff_datetime) BETWEEN '2024-03-01' AND '2024-03-15';
+```
+
+The significant reduction in estimated bytes processed (from 310.24 MB to 26.84 MB) demonstrates the effectiveness of partitioning by tpep_dropoff_datetime, as BigQuery only needs to scan the partitions containing data for March 1-15, 2024, rather than the entire table.
+
 ### Q7: External Table Data Storage
 **Answer**: Data is stored in GCP Bucket
 

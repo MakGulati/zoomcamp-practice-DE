@@ -1,17 +1,15 @@
 # Module 4 Homework Solutions - Data Engineering Zoomcamp 2025
 
-Thank you for providing your script for uploading the CSV files to Google Cloud Storage. I'll create an informative and detailed solution guide with explanations for each question.
 
 ## Setup and Data Preparation
-
-Your script efficiently uploads the NYC taxi data to GCS using the following steps:
+Using this [script](https://github.com/MakGulati/zoomcamp-practice-DE/blob/main/module04/web_to_gcs.py) to :
 - Authenticates with Google Cloud using service account credentials
 - Downloads the compressed CSV files from the GitHub repository
 - Uploads them directly to your GCS bucket in organized folders
 - Cleans up local files to save space
-- Use BigQuery web interface to create a dataset and table for the uploaded data
 
-This approach is excellent for handling large datasets efficiently. [Source code.](https://github.com/MakGulati/zoomcamp-practice-DE/blob/main/module04/web_to_gcs.py)
+and  Use BigQuery web interface to create a dataset and table for the uploaded data
+
 
 ## Question 1: Understanding dbt model resolution
 sources.yaml

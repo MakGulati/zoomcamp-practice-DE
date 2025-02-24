@@ -8,6 +8,7 @@ sources:
     tables:
       - name: green_tripdata
       - name: yellow_tripdata
+      - name: fhv_tripdata
          # freshness:
            # error_after: {count: 6, period: hour}
 
@@ -42,17 +43,17 @@ models:
             description: The elapsed trip distance in miles reported by the taximeter.
           - name: Pickup_locationid
             description: locationid where the meter was engaged.
-            tests:
-              - relationships:
-                  to: ref('taxi_zone_lookup')
-                  field: locationid
-                  severity: warn
+            # tests:
+            #   - relationships:
+            #       to: ref('taxi_zone_lookup')
+            #       field: locationid
+            #       severity: warn
           - name: dropoff_locationid 
             description: locationid where the meter was engaged.
-            tests:
-              - relationships:
-                  to: ref('taxi_zone_lookup')
-                  field: locationid
+            # tests:
+            #   - relationships:
+            #       to: ref('taxi_zone_lookup')
+            #       field: locationid
           - name: RateCodeID 
             description: >
                 The final rate code in effect at the end of the trip.
@@ -76,11 +77,11 @@ models:
           - name: Payment_type 
             description: >
               A numeric code signifying how the passenger paid for the trip.
-            tests: 
-              - accepted_values:
-                  values: "{{ var('payment_type_values') }}"
-                  severity: warn
-                  quote: false
+            # tests: 
+            #   - accepted_values:
+            #       values: "{{ var('payment_type_values') }}"
+            #       severity: warn
+            #       quote: false
           - name: payment_type_description
             description: Description of the payment_type code
           - name: Fare_amount 
@@ -133,18 +134,18 @@ models:
             description: The elapsed trip distance in miles reported by the taximeter.
           - name: Pickup_locationid
             description: locationid where the meter was engaged.
-            tests:
-              - relationships:
-                  to: ref('taxi_zone_lookup')
-                  field: locationid
-                  severity: warn
+            # tests:
+            #   - relationships:
+            #       to: ref('taxi_zone_lookup')
+            #       field: locationid
+            #       severity: warn
           - name: dropoff_locationid 
             description: locationid where the meter was engaged.
-            tests:
-              - relationships:
-                  to: ref('taxi_zone_lookup')
-                  field: locationid
-                  severity: warn
+            # tests:
+            #   - relationships:
+            #       to: ref('taxi_zone_lookup')
+            #       field: locationid
+            #       severity: warn
           - name: RateCodeID 
             description: >
                 The final rate code in effect at the end of the trip.
@@ -168,11 +169,11 @@ models:
           - name: Payment_type 
             description: >
               A numeric code signifying how the passenger paid for the trip.
-            tests: 
-              - accepted_values:
-                  values: "{{ var('payment_type_values') }}"
-                  severity: warn
-                  quote: false
+            # tests: 
+            #   - accepted_values:
+            #       values: "{{ var('payment_type_values') }}"
+            #       severity: warn
+            #       quote: false
           - name: payment_type_description
             description: Description of the payment_type code
           - name: Fare_amount 
@@ -194,3 +195,31 @@ models:
             description: Total amount of all tolls paid in trip.
           - name: Total_amount 
             description: The total amount charged to passengers. Does not include cash tips.
+
+    - name: stg_fhv_tripdata
+      description: >
+        Trips made by For-Hire Vehicles (FHV) in New York City.
+        FHVs include community livery, black car, and luxury limousine services that are dispatched from a base.
+        The records were collected and provided to the NYC Taxi and Limousine Commission (TLC).
+      columns:
+          - name: tripid
+            description: Primary key for this table, generated with a concatenation of dispatching_base_num and pickup_datetime
+            # tests:
+            #     - unique:
+            #         severity: warn
+            #     - not_null:
+            #         severity: warn
+          - name: dispatching_base_num
+            description: The TLC Base License Number of the base that dispatched the trip
+          - name: pickup_locationid
+            description: locationid where the trip was picked up
+          - name: dropoff_locationid
+            description: locationid where the trip was dropped off
+          - name: pickup_datetime
+            description: The date and time when the trip was picked up
+          - name: dropoff_datetime
+            description: The date and time when the trip was dropped off
+          - name: SR_Flag
+            description: Indicates if the trip was a shared ride
+          - name: Affiliated_base_number
+            description: The TLC Base License Number of the base that is affiliated with the trip

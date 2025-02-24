@@ -1,3 +1,8 @@
+{{
+    config(
+        materialized='table'
+    )
+}}
 with fhv_trips as (
     select
         extract(year from pickup_datetime) as year,
@@ -39,8 +44,8 @@ select distinct
     p90_trip_duration_seconds,
     p90_trip_duration_seconds / 60 as p90_trip_duration_minutes
 from p90_travel_times
-where month=11 and pickup_zone='Yorkville East'
+where month=11 and (pickup_zone='Newark Airport' or pickup_zone='SoHo' or pickup_zone='Yorkville East')
 order by
-p90_trip_duration_minutes
+pickup_locationid,p90_trip_duration_minutes
 desc
 

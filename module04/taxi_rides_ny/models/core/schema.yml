@@ -128,3 +128,163 @@ models:
         data_type: string
         description: ""
 
+  - name: fct_taxi_trips_monthly_fare_p95
+    description: ""
+    columns:
+      - name: service_type
+        data_type: string
+        description: ""
+
+      - name: year
+        data_type: int64
+        description: ""
+
+      - name: month
+        data_type: int64
+        description: ""
+
+      - name: fare_amount_p97
+        data_type: float64
+        description: ""
+
+      - name: fare_amount_p95
+        data_type: float64
+        description: ""
+
+      - name: fare_amount_p90
+        data_type: float64
+        description: ""
+
+  - name: fct_fhv_monthly_zone_traveltime_p90
+    description: ""
+    columns:
+      - name: year
+        data_type: int64
+        description: ""
+
+      - name: month
+        data_type: int64
+        description: ""
+
+      - name: pickup_locationid
+        data_type: int64
+        description: ""
+
+      - name: dropoff_locationid
+        data_type: int64
+        description: ""
+
+      - name: pickup_zone
+        data_type: string
+        description: ""
+
+      - name: dropoff_zone
+        data_type: string
+        description: ""
+
+      - name: p90_trip_duration_seconds
+        data_type: float64
+        description: ""
+
+      - name: p90_trip_duration_minutes
+        data_type: float64
+        description: ""
+
+  - name: fct_taxi_trips_quarterly_revenue
+    description: ""
+    columns:
+      - name: service_type
+        data_type: string
+        description: ""
+
+      - name: year
+        data_type: int64
+        description: ""
+
+      - name: quarter
+        data_type: int64
+        description: ""
+
+      - name: quarter_start
+        data_type: timestamp
+        description: ""
+
+      - name: quarterly_revenue
+        data_type: numeric
+        description: ""
+
+      - name: prev_year_revenue
+        data_type: numeric
+        description: ""
+
+      - name: revenue_growth_pct
+        data_type: numeric
+        description: ""
+
+      - name: growth_statement
+        data_type: string
+        description: ""
+
+  - name: dim_fhv_trips
+    description: ""
+    columns:
+      - name: tripid
+        data_type: string
+        description: ""
+
+      - name: dispatching_base_num
+        data_type: string
+        description: ""
+
+      - name: service_type
+        data_type: string
+        description: ""
+
+      - name: pickup_locationid
+        data_type: int64
+        description: ""
+
+      - name: pickup_borough
+        data_type: string
+        description: ""
+
+      - name: pickup_zone
+        data_type: string
+        description: ""
+
+      - name: dropoff_locationid
+        data_type: int64
+        description: ""
+
+      - name: dropoff_borough
+        data_type: string
+        description: ""
+
+      - name: dropoff_zone
+        data_type: string
+        description: ""
+
+      - name: pickup_datetime
+        data_type: timestamp
+        description: ""
+
+      - name: dropoff_datetime
+        data_type: timestamp
+        description: ""
+
+      - name: year
+        data_type: int64
+        description: ""
+
+      - name: month
+        data_type: int64
+        description: ""
+
+      - name: sr_flag
+        data_type: string
+        description: ""
+
+      - name: affiliated_base_number
+        data_type: string
+        description: ""
+

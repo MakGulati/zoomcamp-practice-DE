@@ -43,17 +43,17 @@ models:
             description: The elapsed trip distance in miles reported by the taximeter.
           - name: Pickup_locationid
             description: locationid where the meter was engaged.
-            # tests:
-            #   - relationships:
-            #       to: ref('taxi_zone_lookup')
-            #       field: locationid
-            #       severity: warn
+            tests:
+              - relationships:
+                  to: ref('taxi_zone_lookup')
+                  field: locationid
+                  severity: warn
           - name: dropoff_locationid 
             description: locationid where the meter was engaged.
-            # tests:
-            #   - relationships:
-            #       to: ref('taxi_zone_lookup')
-            #       field: locationid
+            tests:
+              - relationships:
+                  to: ref('taxi_zone_lookup')
+                  field: locationid
           - name: RateCodeID 
             description: >
                 The final rate code in effect at the end of the trip.
@@ -77,11 +77,11 @@ models:
           - name: Payment_type 
             description: >
               A numeric code signifying how the passenger paid for the trip.
-            # tests: 
-            #   - accepted_values:
-            #       values: "{{ var('payment_type_values') }}"
-            #       severity: warn
-            #       quote: false
+            tests: 
+              - accepted_values:
+                  values: "{{ var('payment_type_values') }}"
+                  severity: warn
+                  quote: false
           - name: payment_type_description
             description: Description of the payment_type code
           - name: Fare_amount 
@@ -134,18 +134,18 @@ models:
             description: The elapsed trip distance in miles reported by the taximeter.
           - name: Pickup_locationid
             description: locationid where the meter was engaged.
-            # tests:
-            #   - relationships:
-            #       to: ref('taxi_zone_lookup')
-            #       field: locationid
-            #       severity: warn
+            tests:
+              - relationships:
+                  to: ref('taxi_zone_lookup')
+                  field: locationid
+                  severity: warn
           - name: dropoff_locationid 
             description: locationid where the meter was engaged.
-            # tests:
-            #   - relationships:
-            #       to: ref('taxi_zone_lookup')
-            #       field: locationid
-            #       severity: warn
+            tests:
+              - relationships:
+                  to: ref('taxi_zone_lookup')
+                  field: locationid
+                  severity: warn
           - name: RateCodeID 
             description: >
                 The final rate code in effect at the end of the trip.
@@ -169,11 +169,11 @@ models:
           - name: Payment_type 
             description: >
               A numeric code signifying how the passenger paid for the trip.
-            # tests: 
-            #   - accepted_values:
-            #       values: "{{ var('payment_type_values') }}"
-            #       severity: warn
-            #       quote: false
+            tests: 
+              - accepted_values:
+                  values: "{{ var('payment_type_values') }}"
+                  severity: warn
+                  quote: false
           - name: payment_type_description
             description: Description of the payment_type code
           - name: Fare_amount 
@@ -204,11 +204,11 @@ models:
       columns:
           - name: tripid
             description: Primary key for this table, generated with a concatenation of dispatching_base_num and pickup_datetime
-            # tests:
-            #     - unique:
-            #         severity: warn
-            #     - not_null:
-            #         severity: warn
+            tests:
+                - unique:
+                    severity: warn
+                - not_null:
+                    severity: warn
           - name: dispatching_base_num
             description: The TLC Base License Number of the base that dispatched the trip
           - name: pickup_locationid

@@ -1,1 +1,7 @@
 google_credentials.json
+*.parquet
+*.csv
+fhvhv/
+yellow_ride/
+
+

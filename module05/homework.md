@@ -1,7 +1,7 @@
 # Solutions to Module 5 Homework with Explanations
 
 ## Question 1: Install Spark and PySpark
-After installing Spark and running PySpark, executing `spark.version` returns:
+After installing Spark and running PySpark, executing `pyspark.__version__` returns:
 ```
 3.3.2
 ```
